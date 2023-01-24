@@ -1,0 +1,17 @@
+<Directory "/Users/Neos21/Sites/">  # コメント
+  Options Indexes MultiViews
+  Require all granted
+</Directory>
+
+<Directory "/var/www/html">
+  Options Indexes FollowSymLinks ExecCGI
+  AllowOverride All
+  AddHandler cgi-script .cgi .rb .py
+  Require all granted
+</Directory>
+
+# ↓以下のセクションをまるごとコメントアウトすると「Testing 123...」ページを非表示にしてファイル一覧を表示できる
+<LocationMatch "^/+$">
+    Options -Indexes
+    ErrorDocument 403 /.noindex.html
+</LocationMatch>
